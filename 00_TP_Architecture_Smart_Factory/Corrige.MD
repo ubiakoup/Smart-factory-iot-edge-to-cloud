@@ -174,6 +174,8 @@ Elle permet de connecter les machines aux systèmes informatiques afin d’explo
 * OT : machines, capteurs, automates
 * IT : logiciels, cloud, applications
 
+![Cybus Architecture](./img/integration_IT_OT_cybus.png)
+
 ---
 
 ### 4. Pourquoi l’intégration IT/OT prend de l’ampleur ?
@@ -208,43 +210,43 @@ La Smart Factory est une application concrète de l’Industrie 4.0.
 
 #### Maintenance prédictive
 
-Anticiper les pannes grâce aux données.
+- Anticiper les pannes grâce aux données.
 
 ---
 
 #### Monitoring en temps réel
 
-Surveiller les machines en continu.
+- Surveiller les machines en continu.
 
 ---
 
 #### Détection d’anomalies
 
-Détecter les comportements anormaux.
+- Détecter les comportements anormaux.
 
 ---
 
 #### Optimisation énergétique
 
-Réduire la consommation d’énergie.
+- Réduire la consommation d’énergie.
 
 ---
 
 #### Traçabilité
 
-Suivre la production de bout en bout.
+- Suivre la production de bout en bout.
 
 ---
 
 #### Exploitation cloud / IA
 
-Analyser les données à grande échelle.
+- Analyser les données à grande échelle.
 
 ---
 
 #### Centralisation multi-sites
 
-Superviser plusieurs usines depuis un seul système.
+- Superviser plusieurs usines depuis un seul système.
 
 ---
 
