@@ -88,6 +88,7 @@ Répondez aux questions suivantes :
 2. Pouvez-vous citer d’autres piliers de l’Industrie 4.0 ?
 3. Quelle est la différence entre IT et OT ?
 4. Pourquoi l’intégration IT/OT prend-elle autant d’ampleur ?
-5. Quelle est la relation entre Smart Factory et Industrie 4.0 ?
+5. Quels sont les principaux cas d’usage de l’intégration IT/OT ?
+6. Quelle est la relation entre Smart Factory et Industrie 4.0 ?
 
 ---
