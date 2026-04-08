@@ -157,12 +157,15 @@ Elle permet de connecter les machines aux systèmes informatiques afin d’explo
 
 ### 2. Autres piliers de l’Industrie 4.0
 
-* IoT industriel
+* IoT industriel(IIoT)
 * Big Data
 * Cloud Computing
 * Intelligence artificielle
 * Cybersécurité
 * Robotique
+* Jumeau numérique (Digital Twin)
+* Les pratiques DevOps
+
 
 ---
 
@@ -179,6 +182,19 @@ Elle permet de connecter les machines aux systèmes informatiques afin d’explo
 * optimisation des processus
 * réduction des coûts
 * compétitivité
+* Maturité des technologies:
+  Avant ❌ :
+    * protocoles propriétaires 
+    * réseaux fermés 
+    * faible cybersécurité 
+  Aujourd’hui ✅ :
+    * OPC UA (standard clé IT/OT) 
+    * MQTT 
+    * Kubernetes à l’Edge 
+    * Cloud industriel (AWS IoT, Azure IoT) 
+    * Sécurité Zero Trust
+
+L’intégration est enfin réaliste, scalable et sécurisée
 
 ---
 
