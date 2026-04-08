@@ -48,7 +48,6 @@ ssh edge@IP_RASPBERRY
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade -y
 ```
 
 👉 Permet de :

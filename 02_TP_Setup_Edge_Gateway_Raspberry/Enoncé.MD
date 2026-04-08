@@ -173,7 +173,6 @@ ssh edge@192.168.0.25
 
 ```bash
 sudo apt-get update
-sudo apt-get upgrade -y
 ```
 
 ---
