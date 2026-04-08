@@ -105,8 +105,7 @@ PLC → OPC-UA → Data Collector → MQTT → Node-RED → InfluxDB → Grafana
 
 Notre Architecture de base est materialisée comme suit:
 
-
-
+![basic-Architecture](./img/3-layers-basic-architecture.png)
 👉 Lisez attentivement les sections ci-dessus puis réalisez les exercices suivants :
 
 ---
