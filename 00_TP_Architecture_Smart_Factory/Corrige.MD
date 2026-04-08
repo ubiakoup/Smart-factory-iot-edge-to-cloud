@@ -183,11 +183,11 @@ Elle permet de connecter les machines aux systèmes informatiques afin d’explo
 * réduction des coûts
 * compétitivité
 * Maturité des technologies:
-  Avant ❌ :
+  - Avant ❌ :
     * protocoles propriétaires 
     * réseaux fermés 
     * faible cybersécurité 
-  Aujourd’hui ✅ :
+  - Aujourd’hui ✅ :
     * OPC UA (standard clé IT/OT) 
     * MQTT 
     * Kubernetes à l’Edge 
