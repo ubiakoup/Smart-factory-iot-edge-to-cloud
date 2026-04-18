@@ -54,7 +54,7 @@ Vagrant.configure("2") do |config|
       v.memory = DEFAULT_RAM
       v.cpus  = DEFAULT_CPU
     end
-
+    opc.vm.synced_folder "D:/TECH/Project/Smart-factory-iot-edge-to-cloud/02_TP_run_opcua_plc_simulator", "/home/vagrant/projects", type: "virtualbox"
     opc.vm.provision :shell do |shell|
       shell.path = "install_stack.sh"
       shell.args = ["opcua_plc_simulator"]
