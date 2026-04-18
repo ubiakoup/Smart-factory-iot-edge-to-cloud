@@ -1,0 +1,93 @@
+version: "3.8"
+
+services:
+
+  mosquitto:
+    image: eclipse-mosquitto
+    container_name: mqtt-broker
+    ports:
+      - "1883:1883"
+    networks:
+      - iiot-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mosquitto_pub", "-h", "localhost", "-t", "healthcheck", "-m", "ok"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  influxdb:
+    image: influxdb:2.7
+    container_name: influxdb
+    ports:
+      - "8086:8086"
+    volumes:
+      - influxdb-data:/var/lib/influxdb2
+      - ./secrets/influx_token.txt:/run/secrets/influx_token:ro
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: ${DOCKER_INFLUXDB_INIT_MODE}
+      DOCKER_INFLUXDB_INIT_USERNAME: ${DOCKER_INFLUXDB_INIT_USERNAME}
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${DOCKER_INFLUXDB_INIT_PASSWORD}
+      DOCKER_INFLUXDB_INIT_ORG: ${DOCKER_INFLUXDB_INIT_ORG}
+      DOCKER_INFLUXDB_INIT_BUCKET: ${DOCKER_INFLUXDB_INIT_BUCKET}
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUXDB_TOKEN}
+      # Option alternative plus secure (si activée)
+      # DOCKER_INFLUXDB_INIT_ADMIN_TOKEN_FILE: /run/secrets/influx_token
+    networks:
+      - iiot-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8086/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    depends_on:
+      influxdb:
+        condition: service_healthy
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    networks:
+      - iiot-network
+    restart: unless-stopped
+
+  node-red:
+    image: nodered/node-red
+    container_name: node-red
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+      influxdb:
+        condition: service_healthy
+    ports:
+      - "1880:1880"
+    volumes:
+      - ./node-red-data:/data
+    networks:
+      - iiot-network
+    restart: unless-stopped
+
+  data-collector:
+    build: .
+    container_name: opcua-data-collector
+    depends_on:
+      mosquitto:
+        condition: service_healthy
+    volumes:
+      - ./config.yml:/app/config.yml
+    networks:
+      - iiot-network
+    restart: unless-stopped
+
+volumes:
+  influxdb-data:
+  grafana-storage:
+
+networks:
+  iiot-network:
+    driver: bridge
