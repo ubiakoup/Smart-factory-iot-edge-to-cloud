@@ -2,6 +2,12 @@
 
 set -e
 
+echo "⏳ Waiting for apt to be ready..."
+
+while sudo lsof /var/lib/dpkg/lock-frontend >/dev/null 2>&1; do
+  sleep 2
+done
+
 ROLE=$1
 
 echo "======================================"
@@ -151,7 +157,7 @@ esac
 # =========================
 # 🌐 Show IP
 # =========================
-IP=$(hostname -I | awk '{print $1}')
+IP=$(ip -f inet addr show enp0s8 | sed -En -e 's/.*inet ([0-9.]+).*/\1/p')
 echo "🌐 Machine IP Address: $IP"
 
 echo "✅ Provisioning completed for $ROLE"

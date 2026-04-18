@@ -2,9 +2,11 @@ Vagrant.configure("2") do |config|
 
   PREFIX  = "iot"
   NETWORK = "192.168.56."
-
-  BOX = "eazytraining/ubuntu2204"
-  BOX_VERSION = "1.0"
+  config.vm.boot_timeout = 300
+  config.ssh.forward_agent = false
+  BOX = "ubuntu/jammy64"
+  
+ # BOX_VERSION = "1.0"
 
   # 🔧 Config par défaut (adaptée formation)
   DEFAULT_RAM = ENV['VM_RAM'] || 2048
@@ -19,16 +21,16 @@ Vagrant.configure("2") do |config|
   # =========================
   config.vm.define "#{PREFIX}-ansible" do |ansible|
     ansible.vm.box = BOX
-    ansible.vm.box_version = BOX_VERSION
+ #   ansible.vm.box_version = BOX_VERSION
     ansible.vm.hostname = "#{PREFIX}-ansible"
     ansible.vm.network "private_network", ip: "#{NETWORK}10"
-
+    
     ansible.vm.provider "virtualbox" do |v|
       v.name = "#{PREFIX}-ansible"
       v.memory = DEFAULT_RAM
       v.cpus  = DEFAULT_CPU
     end
-#    ansible.vm.synced_folder "D:/TECH/Project/Smart-factory-iot-edge-to-cloud/11_TP_Deployment_Ansible", "/home/vagrant/projects", type: "virtualbox"
+    ansible.vm.synced_folder "D:/TECH/Project/Smart-factory-iot-edge-to-cloud/11_TP_Deployment_Ansible", "/home/vagrant/projects", type: "virtualbox"
 
     ansible.vm.provision :shell do |shell|
       shell.path = "install_stack.sh"
@@ -42,9 +44,10 @@ Vagrant.configure("2") do |config|
   # =========================
   config.vm.define "#{PREFIX}-opcua-plc-simulator" do |opc|
     opc.vm.box = BOX
-    opc.vm.box_version = BOX_VERSION
+ #   opc.vm.box_version = BOX_VERSION
     opc.vm.hostname = "#{PREFIX}-opcua-plc-simulator"
     opc.vm.network "private_network", ip: "#{NETWORK}11"
+    
 
     opc.vm.provider "virtualbox" do |v|
       v.name = "#{PREFIX}-opcua-plc-simulator"
@@ -64,9 +67,10 @@ Vagrant.configure("2") do |config|
   # =========================
   config.vm.define "#{PREFIX}-edge" do |edge|
     edge.vm.box = BOX
-    edge.vm.box_version = BOX_VERSION
+#    edge.vm.box_version = BOX_VERSION
     edge.vm.hostname = "#{PREFIX}-edge"
     edge.vm.network "private_network", ip: "#{NETWORK}12"
+    
 
     edge.vm.provider "virtualbox" do |v|
       v.name = "#{PREFIX}-edge"
