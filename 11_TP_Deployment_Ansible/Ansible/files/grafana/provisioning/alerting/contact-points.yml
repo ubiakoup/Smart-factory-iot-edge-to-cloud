@@ -1,0 +1,10 @@
+apiVersion: 1
+
+contactPoints:
+  - orgId: 1
+    name: Email Contact
+    receivers:
+      - uid: email_receiver
+        type: email
+        settings:
+          addresses: "mbiakoupberanger@gmail.com"

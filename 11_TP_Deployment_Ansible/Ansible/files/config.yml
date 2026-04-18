@@ -1,0 +1,30 @@
+opcua:
+  url: "opc.tcp://192.168.0.141:4840"
+
+mqtt:
+  broker: mosquitto
+  port: 1883
+
+factory:
+
+  plc1:
+    temperature_motor: "ns=2;s=plc1.temperature"
+    vibration_motor: "ns=2;s=plc1.vibration"
+    motor_current: "ns=2;s=plc1.motor_current"
+    motor_speed: "ns=2;s=plc1.motor_speed"
+    bearing_health: "ns=2;s=plc1.bearing_health"
+    time: "ns=2;s=plc1.time"
+
+  plc2:
+    hydraulic_pressure: "ns=2;s=plc2.pressure"
+    hydraulic_temp: "ns=2;s=plc2.temperature"
+    flow_rate: "ns=2;s=plc2.flow_rate"
+    oil_level: "ns=2;s=plc2.oil_level"
+    time: "ns=2;s=plc2.time"
+
+  plc3:
+    voltage: "ns=2;s=plc3.voltage"
+    current: "ns=2;s=plc3.current"
+    energy: "ns=2;s=plc3.energy"
+    power_factor: "ns=2;s=plc3.power_factor"
+    time: "ns=2;s=plc3.time"

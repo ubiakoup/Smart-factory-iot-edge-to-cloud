@@ -1,0 +1,1699 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "PLC1 - Motor System",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "93510897d5194e70",
+        "type": "tab",
+        "label": "PLC2 - Hydraulic System",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d1949caaacae4884",
+        "type": "tab",
+        "label": "PLC3 - Energy System",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2a1df8fd93b08537",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "mosquitto",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "53e752f38256d3e5",
+        "type": "influxdb",
+        "hostname": "127.0.0.1",
+        "port": 8086,
+        "protocol": "http",
+        "database": "database",
+        "name": "edge",
+        "usetls": false,
+        "tls": "",
+        "influxdbVersion": "2.0",
+        "url": "http://192.168.0.64:8086",
+        "timeout": 10,
+        "rejectUnauthorized": true
+    },
+    {
+        "id": "c5df3308a2890238",
+        "type": "ui-theme",
+        "name": "Default Theme",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094CE",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "density": "default",
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "418f123c8a67a88b",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
+    },
+    {
+        "id": "319c70e7ec9ff1b5",
+        "type": "ui-page",
+        "name": "PLC1",
+        "ui": "418f123c8a67a88b",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "c5df3308a2890238",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 2,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "0ad81a4310922744",
+        "type": "ui-page",
+        "name": "PLC2",
+        "ui": "418f123c8a67a88b",
+        "path": "/page2",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "c5df3308a2890238",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": 1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "cf9ef65860b82374",
+        "type": "ui-page",
+        "name": "PLC3",
+        "ui": "418f123c8a67a88b",
+        "path": "/page3",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "c5df3308a2890238",
+        "breakpoints": [
+            {
+                "name": "Default",
+                "px": "0",
+                "cols": "3"
+            },
+            {
+                "name": "Tablet",
+                "px": "576",
+                "cols": "6"
+            },
+            {
+                "name": "Small Desktop",
+                "px": "768",
+                "cols": "9"
+            },
+            {
+                "name": "Desktop",
+                "px": "1024",
+                "cols": "12"
+            }
+        ],
+        "order": -1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "f6557bef37576562",
+        "type": "ui-group",
+        "name": "PLC1",
+        "page": "319c70e7ec9ff1b5",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "7e8a62703ff7a279",
+        "type": "ui-group",
+        "name": "PLC2",
+        "page": "0ad81a4310922744",
+        "width": 6,
+        "height": 1,
+        "order": 1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "44530da32b20b5f9",
+        "type": "ui-group",
+        "name": "PLC3",
+        "page": "cf9ef65860b82374",
+        "width": 6,
+        "height": 1,
+        "order": -1,
+        "showTitle": true,
+        "className": "",
+        "visible": "true",
+        "disabled": "false",
+        "groupType": "default"
+    },
+    {
+        "id": "3cc11d24.ff01a2",
+        "type": "comment",
+        "z": "f6f2187d.f17ca8",
+        "name": "WARNING: please check you have started this container with a volume that is mounted to /data\\n otherwise any flow changes are lost when you redeploy or upgrade the container\\n (e.g. upgrade to a more recent node-red docker image).\\n  If you are using named volumes you can ignore this warning.\\n Double click or see info side panel to learn how to start Node-RED in Docker to save your work",
+        "info": "\nTo start docker with a bind mount volume (-v option), for example:\n\n```\ndocker run -it -p 1880:1880 -v /home/user/node_red_data:/data --name mynodered nodered/node-red\n```\n\nwhere `/home/user/node_red_data` is a directory on your host machine where you want to store your flows.\n\nIf you do not do this then you can experiment and redploy flows, but if you restart or upgrade the container the flows will be disconnected and lost. \n\nThey will still exist in a hidden data volume, which can be recovered using standard docker techniques, but that is much more complex than just starting with a named volume as described above.",
+        "x": 1590,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "f6e76d7428e1a911",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "factory/plc1/temperature_motor",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 450,
+        "y": 640,
+        "wires": [
+            [
+                "1fcfaa794694bd6c"
+            ]
+        ]
+    },
+    {
+        "id": "35b646e2f4c3a4bb",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1500,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "1fcfaa794694bd6c",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 1",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 640,
+        "wires": [
+            [
+                "e3b068d21249ff1c"
+            ]
+        ]
+    },
+    {
+        "id": "edba7a7a5fdbbfdd",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "factory/+/#",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 380,
+        "y": 520,
+        "wires": [
+            [
+                "0ee9d34635385ba4"
+            ]
+        ]
+    },
+    {
+        "id": "0ee9d34635385ba4",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 2",
+        "func": "let parts = msg.topic.split(\"/\");\n\nif (parts.length < 3) return null;\n\nlet data;\nlet value;   // ✅ IMPORTANT\n\n// parsing intelligent\nif (typeof msg.payload === \"string\") {\n    try {\n        data = JSON.parse(msg.payload);\n    } catch (e) {\n        return null;\n    }\n} else {\n    data = msg.payload;\n}\n\n// ignore timestamps\nif (data.tag === \"time\") return null;\n\n// extraction\nlet machine = data.plc || parts[1];\nlet sensor = data.tag || parts[2];\n\n// nettoyage industriel\nlet raw = data.value;\n\n// cas 1 → number\nif (typeof raw === \"number\") {\n    value = raw;\n}\n\n// cas 2 → string\nelse if (typeof raw === \"string\") {\n    raw = raw.replace(\",\", \".\").trim();\n    value = Number(raw);\n}\n\n// fallback\nelse {\n    value = Number(raw);\n}\n\nif (isNaN(value)) {\n    node.warn(\"Invalid numeric value: \" + JSON.stringify(data));\n    return null;\n}\n\n// measurement\nmsg.measurement = machine + \"_\" + sensor;\n\n// payload influx\nmsg.payload = {\n    value: value\n};\n\nmsg.timestamp = data.timestamp;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 820,
+        "y": 520,
+        "wires": [
+            [
+                "21c077ef45fbc6f2",
+                "35b646e2f4c3a4bb"
+            ]
+        ]
+    },
+    {
+        "id": "23e46266aaceb6ed",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "factory/plc1/vibration_motor",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 440,
+        "y": 760,
+        "wires": [
+            [
+                "5dcc5d5d57bf8eac"
+            ]
+        ]
+    },
+    {
+        "id": "5dcc5d5d57bf8eac",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 3",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 760,
+        "wires": [
+            [
+                "e3a636ec861e3427"
+            ]
+        ]
+    },
+    {
+        "id": "d51e93b182437f42",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "factory/plc1/motor_current",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 880,
+        "wires": [
+            [
+                "10872cbba9b60661"
+            ]
+        ]
+    },
+    {
+        "id": "10872cbba9b60661",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 4",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 880,
+        "wires": [
+            [
+                "dcc8a2ac388e9125"
+            ]
+        ]
+    },
+    {
+        "id": "32497bf062d9bfe2",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "factory/plc1/motor_speed",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 980,
+        "wires": [
+            [
+                "458779e0842abb7c"
+            ]
+        ]
+    },
+    {
+        "id": "458779e0842abb7c",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 5",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 980,
+        "wires": [
+            [
+                "bd3f7c95e8858491"
+            ]
+        ]
+    },
+    {
+        "id": "00aab0081365f638",
+        "type": "mqtt in",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "topic": "factory/plc1/bearing_health",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 1060,
+        "wires": [
+            [
+                "f6ebc0f86f13c53b"
+            ]
+        ]
+    },
+    {
+        "id": "f6ebc0f86f13c53b",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 6",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 880,
+        "y": 1060,
+        "wires": [
+            [
+                "e7232ef52c15a870"
+            ]
+        ]
+    },
+    {
+        "id": "21c077ef45fbc6f2",
+        "type": "influxdb out",
+        "z": "f6f2187d.f17ca8",
+        "influxdb": "53e752f38256d3e5",
+        "name": "edge",
+        "measurement": "plc_data",
+        "precision": "",
+        "retentionPolicy": "",
+        "database": "database",
+        "precisionV18FluxV20": "ms",
+        "retentionPolicyV18Flux": "",
+        "org": "IoT",
+        "bucket": "edge-GW",
+        "x": 1490,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "e3b068d21249ff1c",
+        "type": "ui-gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Motor_Temperature",
+        "group": "f6557bef37576562",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Motor_Temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "45",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1530,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd3f7c95e8858491",
+        "type": "ui-gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Motor Speed",
+        "group": "f6557bef37576562",
+        "order": 5,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "Motor Speed",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "RPM",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "1600",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "1800",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "2000",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1490,
+        "y": 980,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e7232ef52c15a870",
+        "type": "ui-gauge",
+        "z": "f6f2187d.f17ca8",
+        "name": "Bearing heath",
+        "group": "f6557bef37576562",
+        "order": 4,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-tank",
+        "gstyle": "needle",
+        "title": "Bearing heath",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "RPM",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "90",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "70",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "0",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1500,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e3a636ec861e3427",
+        "type": "ui-chart",
+        "z": "f6f2187d.f17ca8",
+        "group": "f6557bef37576562",
+        "name": "Vibration",
+        "label": "Motor Vibration",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "vibration(g)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "5",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "step",
+        "x": 1500,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dcc8a2ac388e9125",
+        "type": "ui-chart",
+        "z": "f6f2187d.f17ca8",
+        "group": "f6557bef37576562",
+        "name": "Motor Current",
+        "label": "Motor Vibration",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "current (A)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "20",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "step",
+        "x": 1500,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "857a9b08954b8b83",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 15",
+        "func": "let parts = msg.topic.split(\"/\");\n\n// sécurité\nif (parts.length < 3) return null;\n\nlet machine = parts[1];\nlet sensor = parts[2];\n\nlet value = Number(msg.payload);\n\n// ignorer non numérique\nif (isNaN(value)) return null;\n\n// format SIMPLE (compatible mode 1)\nmsg.payload = {};\nmsg.payload[sensor] = value;\n\n// ajouter tag\nmsg.tags = {\n    machine: machine\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 830,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "eadcb78f15aa4116",
+        "type": "mqtt in",
+        "z": "93510897d5194e70",
+        "name": "",
+        "topic": "factory/plc2/hydraulic_pressure",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "6fb78c808a937788"
+            ]
+        ]
+    },
+    {
+        "id": "6fb78c808a937788",
+        "type": "function",
+        "z": "93510897d5194e70",
+        "name": "function 7",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 260,
+        "wires": [
+            [
+                "b7dd0950a31b1686",
+                "908d92a5700d3d88"
+            ]
+        ]
+    },
+    {
+        "id": "4b954680fc50246d",
+        "type": "mqtt in",
+        "z": "93510897d5194e70",
+        "name": "",
+        "topic": "factory/plc2/hydraulic_temp",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 370,
+        "y": 380,
+        "wires": [
+            [
+                "ed9b4bb2659aaaf4"
+            ]
+        ]
+    },
+    {
+        "id": "ed9b4bb2659aaaf4",
+        "type": "function",
+        "z": "93510897d5194e70",
+        "name": "function 8",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 380,
+        "wires": [
+            [
+                "1911e1736247d1b3"
+            ]
+        ]
+    },
+    {
+        "id": "bd51efcdf6b0a351",
+        "type": "mqtt in",
+        "z": "93510897d5194e70",
+        "name": "",
+        "topic": "factory/plc2/flow_rate",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "8a2c2560e1008aad"
+            ]
+        ]
+    },
+    {
+        "id": "8a2c2560e1008aad",
+        "type": "function",
+        "z": "93510897d5194e70",
+        "name": "function 9",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 500,
+        "wires": [
+            [
+                "5c0f7dc457067497"
+            ]
+        ]
+    },
+    {
+        "id": "2c7c3a55ae04585e",
+        "type": "mqtt in",
+        "z": "93510897d5194e70",
+        "name": "",
+        "topic": "factory/plc2/oil_level",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 350,
+        "y": 600,
+        "wires": [
+            [
+                "7ffb187bd4a5433f"
+            ]
+        ]
+    },
+    {
+        "id": "7ffb187bd4a5433f",
+        "type": "function",
+        "z": "93510897d5194e70",
+        "name": "function 10",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 800,
+        "y": 600,
+        "wires": [
+            [
+                "ef1f0a59b7fab910"
+            ]
+        ]
+    },
+    {
+        "id": "908d92a5700d3d88",
+        "type": "debug",
+        "z": "93510897d5194e70",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1420,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "ef1f0a59b7fab910",
+        "type": "ui-gauge",
+        "z": "93510897d5194e70",
+        "name": "Oil level",
+        "group": "7e8a62703ff7a279",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-tank",
+        "gstyle": "needle",
+        "title": "Oil level",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "RPM",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#f40101",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "90",
+                "color": "#0af025",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1440,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1911e1736247d1b3",
+        "type": "ui-gauge",
+        "z": "93510897d5194e70",
+        "name": "hydraulic temperature",
+        "group": "7e8a62703ff7a279",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "hydraulic temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "45",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1460,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b7dd0950a31b1686",
+        "type": "ui-chart",
+        "z": "93510897d5194e70",
+        "group": "7e8a62703ff7a279",
+        "name": "hydraulic pressure",
+        "label": "hydraulic pressure",
+        "order": 3,
+        "chartType": "bar",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "category",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Pressure(Pa)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "200",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#ffffff",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 1450,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "5c0f7dc457067497",
+        "type": "ui-chart",
+        "z": "93510897d5194e70",
+        "group": "7e8a62703ff7a279",
+        "name": "Flow rate",
+        "label": "Flow rate",
+        "order": 4,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Flow rate(L/min)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "150",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "step",
+        "x": 1420,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "992824edafb93594",
+        "type": "mqtt in",
+        "z": "d1949caaacae4884",
+        "name": "",
+        "topic": "factory/plc3/voltage",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 260,
+        "wires": [
+            [
+                "fef920dba21199ab"
+            ]
+        ]
+    },
+    {
+        "id": "fef920dba21199ab",
+        "type": "function",
+        "z": "d1949caaacae4884",
+        "name": "function 11",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 260,
+        "wires": [
+            [
+                "c7ce0627f92507aa",
+                "73f471b6f5cbc9f2"
+            ]
+        ]
+    },
+    {
+        "id": "a25a2a7c3f339f32",
+        "type": "mqtt in",
+        "z": "d1949caaacae4884",
+        "name": "",
+        "topic": "factory/plc3/current",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 380,
+        "wires": [
+            [
+                "770152e550564e93"
+            ]
+        ]
+    },
+    {
+        "id": "770152e550564e93",
+        "type": "function",
+        "z": "d1949caaacae4884",
+        "name": "function 12",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 380,
+        "wires": [
+            [
+                "e1cee6cd2c2fe786"
+            ]
+        ]
+    },
+    {
+        "id": "5d705639a035c59e",
+        "type": "mqtt in",
+        "z": "d1949caaacae4884",
+        "name": "",
+        "topic": "factory/plc3/energy",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 410,
+        "y": 500,
+        "wires": [
+            [
+                "3216ccbe1836ac0f"
+            ]
+        ]
+    },
+    {
+        "id": "3216ccbe1836ac0f",
+        "type": "function",
+        "z": "d1949caaacae4884",
+        "name": "function 13",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 500,
+        "wires": [
+            [
+                "e49c9b02b80b5a9e"
+            ]
+        ]
+    },
+    {
+        "id": "eeef7a08a1b9c69b",
+        "type": "mqtt in",
+        "z": "d1949caaacae4884",
+        "name": "",
+        "topic": "factory/plc3/power_factor",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "2a1df8fd93b08537",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 430,
+        "y": 600,
+        "wires": [
+            [
+                "8fe95a09d173d2f8"
+            ]
+        ]
+    },
+    {
+        "id": "8fe95a09d173d2f8",
+        "type": "function",
+        "z": "d1949caaacae4884",
+        "name": "function 14",
+        "func": "let value = msg.payload.value;\n\nif (value === undefined) return null;\n\nvalue = Number(value);\n\nif (isNaN(value)) return null;\n\nmsg.payload = value;\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 860,
+        "y": 600,
+        "wires": [
+            [
+                "f3cd891a7598c782"
+            ]
+        ]
+    },
+    {
+        "id": "73f471b6f5cbc9f2",
+        "type": "debug",
+        "z": "d1949caaacae4884",
+        "name": "debug 3",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1480,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "f3cd891a7598c782",
+        "type": "ui-gauge",
+        "z": "d1949caaacae4884",
+        "name": "Power factor",
+        "group": "44530da32b20b5f9",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-tank",
+        "gstyle": "needle",
+        "title": "Power factor",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "RPM",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ce0d51",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "0,50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "0,90",
+                "color": "#3bf109",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "1",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1510,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c7ce0627f92507aa",
+        "type": "ui-chart",
+        "z": "d1949caaacae4884",
+        "group": "44530da32b20b5f9",
+        "name": "Voltage",
+        "label": "Voltage",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "category",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "V",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "500",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#ffffff",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 1480,
+        "y": 260,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e49c9b02b80b5a9e",
+        "type": "ui-chart",
+        "z": "d1949caaacae4884",
+        "group": "44530da32b20b5f9",
+        "name": "Energy",
+        "label": "Energy",
+        "order": 4,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "Energy (W)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "1000",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "step",
+        "x": 1480,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e1cee6cd2c2fe786",
+        "type": "ui-chart",
+        "z": "d1949caaacae4884",
+        "group": "44530da32b20b5f9",
+        "name": "Current",
+        "label": "Current",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "category",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "A",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "20",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#ffffff",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "smooth",
+        "x": 1480,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "30436de5c5c3f0bb",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-influxdb": "0.7.0",
+            "@flowfuse/node-red-dashboard": "1.30.2"
+        }
+    }
+]

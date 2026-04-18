@@ -1,0 +1,275 @@
+apiVersion: 1
+
+groups:
+  - name: plc_alerts
+    folder: IIoT Alerts
+    interval: 10s
+
+    rules:
+
+# =========================
+# TEMPLATE UTILISÉ PARTOUT
+# A = query
+# B = reduce (last)
+# C = threshold
+# =========================
+
+# =========================
+# PLC1
+# =========================
+
+      - uid: plc1_temp_high
+        title: PLC1 Temperature High
+        condition: C
+        for: 10s
+        labels: {severity: warning}
+        annotations:
+          summary: "PLC1 temperature too high"
+
+        data:
+          - refId: A
+            datasourceUid: influxdb
+            relativeTimeRange: {from: 60, to: 0}
+            model:
+              query: |
+                from(bucket: "edge-GW")
+                  |> range(start: -1m)
+                  |> filter(fn: (r) => r._measurement == "temperature_motor")
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: gt, params: [70]}
+                  operator: {type: and}
+                  reducer: {type: last}
+                  type: query
+
+# -------------------------
+
+      - uid: plc1_vibration_high
+        title: PLC1 Vibration High
+        condition: C
+        for: 10s
+        labels: {severity: warning}
+
+        data:
+          - refId: A
+            datasourceUid: influxdb
+            relativeTimeRange: {from: 300, to: 0}
+            model:
+              query: |
+                from(bucket: "edge-GW")
+                  |> range(start: -5m)
+                  |> filter(fn: (r) => r._measurement == "plc1_vibration_motor")
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: gt, params: [0.7]}
+                  operator: {type: and}
+                  reducer: {type: last}
+                  type: query
+
+# -------------------------
+
+      - uid: plc1_speed_low
+        title: PLC1 Motor Speed Low
+        condition: C
+        for: 10s
+        labels: {severity: warning}
+
+        data:
+          - refId: A
+            datasourceUid: influxdb
+            relativeTimeRange: {from: 300, to: 0}
+            model:
+              query: |
+                from(bucket: "edge-GW")
+                  |> range(start: -5m)
+                  |> filter(fn: (r) => r._measurement == "plc1_motor_speed")
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: lt, params: [1200]}
+                  operator: {type: and}
+                  reducer: {type: last}
+                  type: query
+
+# -------------------------
+
+      - uid: plc1_bearing_low
+        title: PLC1 Bearing Health Low
+        condition: C
+        for: 10s
+        labels: {severity: critical}
+
+        data:
+          - refId: A
+            datasourceUid: influxdb
+            relativeTimeRange: {from: 300, to: 0}
+            model:
+              query: |
+                from(bucket: "edge-GW")
+                  |> range(start: -5m)
+                  |> filter(fn: (r) => r._measurement == "plc1_bearing_health")
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: lt, params: [80]}
+                  operator: {type: and}
+                  reducer: {type: last}
+                  type: query
+
+# =========================
+# PLC2
+# =========================
+
+      - uid: plc2_pressure_high
+        title: PLC2 Pressure High
+        condition: C
+        for: 10s
+        labels: {severity: critical}
+
+        data:
+          - refId: A
+            datasourceUid: influxdb
+            relativeTimeRange: {from: 300, to: 0}
+            model:
+              query: |
+                from(bucket: "edge-GW")
+                  |> range(start: -5m)
+                  |> filter(fn: (r) => r._measurement == "plc2_hydraulic_pressure")
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: gt, params: [160]}
+                  operator: {type: and}
+                  reducer: {type: last}
+                  type: query
+
+# -------------------------
+
+      - uid: plc2_flow_low
+        title: PLC2 Flow Low
+        condition: C
+        for: 10s
+        labels: {severity: warning}
+
+        data:
+          - refId: A
+            datasourceUid: influxdb
+            relativeTimeRange: {from: 300, to: 0}
+            model:
+              query: |
+                from(bucket: "edge-GW")
+                  |> range(start: -5m)
+                  |> filter(fn: (r) => r._measurement == "plc2_flow_rate")
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: lt, params: [15]}
+                  operator: {type: and}
+                  reducer: {type: last}
+                  type: query
+
+# =========================
+# PLC3
+# =========================
+
+      - uid: plc3_voltage_high
+        title: PLC3 Voltage High
+        condition: C
+        for: 10s
+        labels: {severity: critical}
+
+        data:
+          - refId: A
+            datasourceUid: influxdb
+            relativeTimeRange: {from: 300, to: 0}
+            model:
+              query: |
+                from(bucket: "edge-GW")
+                  |> range(start: -5m)
+                  |> filter(fn: (r) => r._measurement == "plc3_voltage")
+
+          - refId: B
+            datasourceUid: __expr__
+            model:
+              type: reduce
+              expression: A
+              reducer: last
+
+          - refId: C
+            datasourceUid: __expr__
+            model:
+              type: threshold
+              expression: B
+              conditions:
+                - evaluator: {type: gt, params: [250]}
+                  operator: {type: and}
+                  reducer: {type: last}
+                  type: query

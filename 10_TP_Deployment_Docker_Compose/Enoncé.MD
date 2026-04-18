@@ -6,50 +6,101 @@
 
 À la fin de ce TP, vous serez capable de :
 
-* Déployer toute une architecture IoT avec Docker Compose
-* Comprendre la notion de services multi-conteneurs
-* Utiliser les healthchecks
-* Gérer les dépendances entre services
-* Industrialiser une stack complète
+* Déployer une architecture IoT complète avec Docker Compose
+* Utiliser des variables d’environnement
+* Gérer des secrets de manière sécurisée
+* Comprendre les healthchecks
+* Orchestrer plusieurs services
 
 ---
 
 ## Contexte
 
-Jusqu’à présent, nous avons :
+Jusqu’à présent :
 
-* lancé chaque conteneur manuellement
-* configuré chaque service séparément
+* chaque service était lancé manuellement
+* la configuration était fragmentée
 
-👉 En entreprise, cette approche n’est pas scalable.
-
-👉 On utilise Docker Compose pour orchestrer toute la stack.
+👉 En environnement réel, on automatise tout avec Docker Compose.
 
 ---
 
 # Architecture finale
 
-```text
+```text id="x1k9p2"
 OPC-UA → MQTT → Node-RED → InfluxDB → Grafana
 ```
 
 ---
 
-# Partie 1 — Création du docker-compose.yml
+# Partie 1 — Fichier `.env`
 
 ---
 
-Créer le fichier :
+Créer un fichier :
 
-```bash
-nano docker-compose.yml
+```bash id="c2m8k1"
+nano .env
 ```
 
 ---
 
 ## Contenu
 
-```yaml
+```env id="z4k7p2"
+DOCKER_INFLUXDB_INIT_MODE=setup
+DOCKER_INFLUXDB_INIT_USERNAME=admin
+DOCKER_INFLUXDB_INIT_PASSWORD=admin123
+DOCKER_INFLUXDB_INIT_ORG=iiot
+DOCKER_INFLUXDB_INIT_BUCKET=edge-GW
+INFLUXDB_TOKEN=my-super-token
+```
+
+---
+
+# Partie 2 — Gestion des secrets (optionnel mais recommandé)
+
+---
+
+Créer le dossier :
+
+```bash id="p8k2m3"
+mkdir -p secrets
+```
+
+---
+
+Créer le fichier :
+
+```bash id="y2k9p1"
+nano secrets/influx_token.txt
+```
+
+---
+
+## Contenu
+
+```text id="u7k3p1"
+my-super-token
+```
+
+---
+
+# Partie 3 — docker-compose.yml
+
+---
+
+Créer le fichier :
+
+```bash id="n8k2p4"
+nano docker-compose.yml
+```
+
+---
+
+## Contenu complet
+
+```yaml id="m2k9p3"
 version: "3.8"
 
 services:
@@ -75,17 +126,31 @@ services:
       - "8086:8086"
     volumes:
       - influxdb-data:/var/lib/influxdb2
+      - ./secrets/influx_token.txt:/run/secrets/influx_token:ro
+    environment:
+      DOCKER_INFLUXDB_INIT_MODE: ${DOCKER_INFLUXDB_INIT_MODE}
+      DOCKER_INFLUXDB_INIT_USERNAME: ${DOCKER_INFLUXDB_INIT_USERNAME}
+      DOCKER_INFLUXDB_INIT_PASSWORD: ${DOCKER_INFLUXDB_INIT_PASSWORD}
+      DOCKER_INFLUXDB_INIT_ORG: ${DOCKER_INFLUXDB_INIT_ORG}
+      DOCKER_INFLUXDB_INIT_BUCKET: ${DOCKER_INFLUXDB_INIT_BUCKET}
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUXDB_TOKEN}
+      # Option avancée :
+      # DOCKER_INFLUXDB_INIT_ADMIN_TOKEN_FILE: /run/secrets/influx_token
     networks:
       - iiot-network
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8086/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
 
   grafana:
     image: grafana/grafana
     container_name: grafana
     depends_on:
-      - influxdb
+      influxdb:
+        condition: service_healthy
     ports:
       - "3000:3000"
     volumes:
@@ -125,7 +190,6 @@ services:
 volumes:
   influxdb-data:
   grafana-storage:
-  node-red-data:
 
 networks:
   iiot-network:
@@ -134,21 +198,21 @@ networks:
 
 ---
 
-# Partie 2 — Lancer la stack
+# Partie 4 — Lancement
 
 ---
 
-```bash
+```bash id="f3k9p2"
 docker compose up -d --build
 ```
 
 ---
 
-# Partie 3 — Vérification
+# Partie 5 — Vérification
 
 ---
 
-```bash
+```bash id="k2p8m1"
 docker compose ps
 ```
 
@@ -161,7 +225,7 @@ docker compose ps
 
 ---
 
-# Partie 4 — Accès aux services
+# Partie 6 — Accès aux services
 
 ---
 
@@ -173,62 +237,37 @@ docker compose ps
 
 ---
 
-# Partie 5 — Comprendre les Healthchecks
+# Partie 7 — Healthchecks
 
 ---
 
 ## Définition
 
-Un healthcheck permet de vérifier si un service fonctionne correctement.
+Permet de vérifier l’état d’un service.
 
 ---
 
 ## Exemple MQTT
 
-```yaml
+```yaml id="p2k8m1"
 healthcheck:
-  test: ["CMD", "mosquitto_pub", "-h", "localhost", "-t", "healthcheck", "-m", "ok"]
+  test: ["CMD", "mosquitto_pub", "-h", "localhost"]
 ```
-
----
-
-👉 Vérifie que le broker répond
 
 ---
 
 ## Exemple InfluxDB
 
-```yaml
+```yaml id="x7k2p1"
 test: ["CMD", "curl", "-f", "http://localhost:8086/health"]
 ```
 
 ---
 
-👉 Vérifie que l’API est disponible
+👉 Permet de garantir :
 
----
-
-## Pourquoi c’est important ?
-
-* éviter démarrage trop rapide
-* gérer dépendances
-* améliorer la stabilité
-
----
-
-# Partie 6 — Dépendances intelligentes
-
----
-
-```yaml
-depends_on:
-  mosquitto:
-    condition: service_healthy
-```
-
----
-
-👉 Node-RED attend que MQTT soit prêt
+* démarrage correct
+* dépendances fiables
 
 ---
 
@@ -244,48 +283,40 @@ Pourquoi utiliser Docker Compose ?
 
 ## Exercice 2
 
-Quel est le rôle des healthchecks ?
+Pourquoi utiliser un fichier `.env` ?
 
 ---
 
 ## Exercice 3
 
-Pourquoi utiliser depends_on ?
+Pourquoi utiliser un fichier secret ?
 
 ---
 
 ## Exercice 4
 
-Quelle différence avec docker run ?
+Quel est le rôle des healthchecks ?
 
 ---
 
 # Résultat attendu
 
-* stack complète déployée
+* stack complète fonctionnelle
 * services interconnectés
-* architecture fonctionnelle
-
----
-
-# Hints
-
-* vérifier logs : docker compose logs
-* vérifier ports
-* vérifier network
+* architecture stable
 
 ---
 
 # Conclusion
 
-Docker Compose permet de déployer une architecture complète en une seule commande.
+Docker Compose permet de déployer toute l’architecture en une seule commande.
 
-👉 C’est la base des environnements DevOps modernes.
+👉 C’est une approche DevOps moderne.
 
 ---
 
 ## Prochaine étape
 
-👉 Déploiement avec Ansible / CI-CD
+👉 CI/CD et Pull Model
 
 ---
