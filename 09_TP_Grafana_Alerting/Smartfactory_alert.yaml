@@ -1,0 +1,241 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: Smartfactory_alert
+      folder: IoT_alerts
+      interval: 30s
+      rules:
+        - uid: ffjkxj03098n4a
+          title: Motor Temperature high
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: bfjka1knwwutca
+              model:
+                datasource:
+                    type: influxdb
+                    uid: bfjka1knwwutca
+                instant: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                query: "from(bucket: \"edge-GW\")\r\n |> range(start: -1m) \r\n |> filter(fn: (r) => r._measurement == \"plc1_temperature_motor\")"
+                range: true
+                refId: A
+            - refId: B
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 60
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: adfrggp
+          panelId: 2
+          noDataState: NoData
+          execErrState: Error
+          for: 30s
+          keepFiringFor: 10s
+          annotations:
+            __dashboardUid__: adfrggp
+            __panelId__: "2"
+            summary: Motor Temperature too high
+          isPaused: false
+          notification_settings:
+            receiver: SMTP_google
+        - uid: cfjl155f1uqrka
+          title: plc1_vibration_high
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: bfjka1knwwutca
+              model:
+                intervalMs: 1000
+                maxDataPoints: 43200
+                query: "from(bucket: \"edge-GW\")\r\n |> range(start: -1m) \r\n |> filter(fn: (r) => r._measurement == \"plc1_vibration_motor\")"
+                refId: A
+            - refId: B
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 3
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          noDataState: NoData
+          execErrState: Error
+          for: 30s
+          keepFiringFor: 10s
+          annotations:
+            summary: vibration to high
+          isPaused: false
+          notification_settings:
+            receiver: SMTP_google
+        - uid: afjl1kjbgadq8a
+          title: plc3_current_high
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 600
+                to: 0
+              datasourceUid: bfjka1knwwutca
+              model:
+                instant: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                query: "from(bucket: \"edge-GW\")\r\n  |> range(start: -1m)\r\n  |> filter(fn: (r) => r._measurement == \"plc3_current\")"
+                range: true
+                refId: A
+            - refId: B
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 8
+                            - 13
+                        type: outside_range
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          noDataState: NoData
+          execErrState: Error
+          for: 30s
+          keepFiringFor: 10s
+          annotations:
+            summary: current out of range
+          isPaused: false
+          notification_settings:
+            receiver: SMTP_google

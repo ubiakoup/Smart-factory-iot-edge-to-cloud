@@ -1,0 +1,89 @@
+apiVersion: 1
+groups:
+    - orgId: 1
+      name: alerte_partie1
+      folder: Test
+      interval: 30s
+      rules:
+        - uid: bfjl8934385c0f
+          title: Motor_temperature_high
+          condition: C
+          data:
+            - refId: A
+              relativeTimeRange:
+                from: 300
+                to: 0
+              datasourceUid: bfjka1knwwutca
+              model:
+                datasource:
+                    type: influxdb
+                    uid: bfjka1knwwutca
+                instant: false
+                intervalMs: 1000
+                maxDataPoints: 43200
+                query: "from(bucket: \"edge-GW\")\r\n  |> range(start: -1m)\r\n  |> filter(fn: (r) => r._measurement == \"plc1_temperature_motor\")"
+                range: true
+                refId: A
+            - refId: B
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params: []
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params: []
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: A
+                intervalMs: 1000
+                maxDataPoints: 43200
+                reducer: last
+                refId: B
+                type: reduce
+            - refId: C
+              queryType: expression
+              datasourceUid: __expr__
+              model:
+                conditions:
+                    - evaluator:
+                        params:
+                            - 70
+                        type: gt
+                      operator:
+                        type: and
+                      query:
+                        params:
+                            - C
+                      reducer:
+                        params: []
+                        type: last
+                      type: query
+                datasource:
+                    type: __expr__
+                    uid: __expr__
+                expression: B
+                intervalMs: 1000
+                maxDataPoints: 43200
+                refId: C
+                type: threshold
+          dashboardUid: adfrggp
+          panelId: 2
+          noDataState: NoData
+          execErrState: Error
+          for: 30s
+          keepFiringFor: 10s
+          annotations:
+            __dashboardUid__: adfrggp
+            __panelId__: "2"
+          isPaused: false
+          notification_settings:
+            receiver: SMTP_google
