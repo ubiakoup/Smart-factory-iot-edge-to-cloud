@@ -806,27 +806,9 @@
         "retentionPolicyV18Flux": "",
         "org": "iiot",
         "bucket": "edge-GW",
-        "x": 1490,
+        "x": 1510,
         "y": 520,
         "wires": []
-    },
-    {
-        "id": "857a9b08954b8b83",
-        "type": "function",
-        "z": "f6f2187d.f17ca8",
-        "name": "function 15",
-        "func": "let parts = msg.topic.split(\"/\");\n\n// sécurité\nif (parts.length < 3) return null;\n\nlet machine = parts[1];\nlet sensor = parts[2];\n\nlet value = Number(msg.payload);\n\n// ignorer non numérique\nif (isNaN(value)) return null;\n\n// format SIMPLE (compatible mode 1)\nmsg.payload = {};\nmsg.payload[sensor] = value;\n\n// ajouter tag\nmsg.tags = {\n    machine: machine\n};\n\nreturn msg;",
-        "outputs": 1,
-        "timeout": 0,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 1350,
-        "y": 80,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "e3a636ec861e3427",
@@ -1949,7 +1931,7 @@
         ]
     },
     {
-        "id": "270630b809183886",
+        "id": "e7974715a07a15b5",
         "type": "global-config",
         "env": [],
         "modules": {
