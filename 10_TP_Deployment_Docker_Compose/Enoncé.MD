@@ -1,8 +1,8 @@
-# ✅ TP 10 — Industrialisation avec Docker Compose & Provisioning automatique
+# TP 10 — Industrialisation avec Docker Compose & Provisioning automatique
 
 ---
 
-## 🎯 Objectifs pédagogiques
+## Objectifs pédagogiques
 
 À la fin de ce TP, vous serez capable de :
 
@@ -13,7 +13,7 @@
 
 ---
 
-## 🧠 Contexte
+##  Contexte
 
 Jusqu’ici, vous avez mis en place :
 
@@ -27,7 +27,7 @@ Jusqu’ici, vous avez mis en place :
 
 ---
 
-## ❌ Problème
+## Problème
 
 * déploiement long
 * non reproductible
@@ -35,7 +35,7 @@ Jusqu’ici, vous avez mis en place :
 
 ---
 
-## ✅ Objectif du TP
+## Objectif du TP
 
 👉 Construire une architecture **automatisée et industrialisée**
 
@@ -45,11 +45,11 @@ PLC → OPC UA → MQTT → Node-RED → InfluxDB → Grafana
 
 ---
 
-# 🏗️ Partie 1 — Structuration du projet
+# Partie 1 — Structuration du projet
 
 ---
 
-## 🎯 Objectif
+##  Objectif
 
 Organiser correctement les fichiers pour permettre le provisioning automatique.
 
@@ -78,11 +78,11 @@ Puis organiser :
 
 ---
 
-# ⚙️ Partie 2 — Configuration InfluxDB
+# Partie 2 — Configuration InfluxDB
 
 ---
 
-## 🎯 Objectif
+## Objectif
 
 Automatiser l’initialisation de :
 
@@ -108,11 +108,11 @@ Créer un fichier :
 
 ---
 
-# 🔐 Partie 3 — Gestion des secrets
+# Partie 3 — Gestion des secrets
 
 ---
 
-## 🎯 Objectif
+## Objectif
 
 Sécuriser le token InfluxDB
 
@@ -134,11 +134,11 @@ secrets/influx_token.txt
 
 ---
 
-# ⚙️ Partie 4 — Création du Docker Compose
+# Partie 4 — Création du Docker Compose
 
 ---
 
-## 🎯 Objectif
+## Objectif
 
 Créer un fichier :
 
@@ -154,7 +154,7 @@ Votre docker-compose doit contenir :
 
 ---
 
-### 🔹 MQTT
+###  MQTT
 
 * image Mosquitto
 * réseau commun
@@ -162,7 +162,7 @@ Votre docker-compose doit contenir :
 
 ---
 
-### 🔹 InfluxDB
+### InfluxDB
 
 * initialisation via `.env`
 * volume pour persistance
@@ -170,7 +170,7 @@ Votre docker-compose doit contenir :
 
 ---
 
-### 🔹 Grafana
+### Grafana
 
 * connexion à InfluxDB
 * provisioning automatique :
@@ -182,21 +182,21 @@ Votre docker-compose doit contenir :
 
 ---
 
-### 🔹 Node-RED
+### Node-RED
 
 * connecté à MQTT et InfluxDB
 * chargement automatique du flow
 
 ---
 
-### 🔹 Data Collector
+### Data Collector
 
 * connecté à MQTT
 * utilisation du fichier config.yml
 
 ---
 
-### 🔹 Réseau
+### Réseau
 
 * réseau Docker unique
 
@@ -208,7 +208,7 @@ Votre docker-compose doit contenir :
 
 ---
 
-# 🚀 Partie 5 — Déploiement
+# Partie 5 — Déploiement
 
 ---
 
@@ -227,7 +227,7 @@ docker compose up -d
 
 ---
 
-# 🧪 Partie 6 — Validation
+# Partie 6 — Validation
 
 ---
 
@@ -249,7 +249,7 @@ docker compose up -d
 
 ---
 
-# 🧠 Analyse
+# Analyse
 
 ---
 
@@ -271,7 +271,7 @@ Pourquoi automatiser toute l’infrastructure ?
 
 ---
 
-# ✅ Résultat attendu
+# Résultat attendu
 
 ---
 

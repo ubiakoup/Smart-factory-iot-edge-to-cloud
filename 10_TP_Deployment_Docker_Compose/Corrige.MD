@@ -2,7 +2,7 @@
 
 ---
 
-## 🧠 Principe clé
+##  Principe clé
 
 👉 On passe de :
 
@@ -40,14 +40,14 @@ GF_SMTP_FROM_NAME=grafana
 
 ---
 
-## 🧠 Explication
+##  Explication
 
 👉 Permet d’initialiser automatiquement InfluxDB
 👉 Configure aussi l’envoi d’emails dans Grafana
 
 ---
 
-# 🔐 2 — Secret InfluxDB
+# 2 — Secret InfluxDB
 
 ---
 
@@ -58,21 +58,21 @@ echo "my-super-token" > secrets/influx_token.txt
 
 ---
 
-## 🧠 Explication
+## Explication
 
 👉 évite d’exposer le token dans le code
 👉 bonne pratique DevOps
 
 ---
 
-# ⚙️ 3 — Docker Compose COMPLET
+# 3 — Docker Compose COMPLET
 
 ---
 
 ![docker-compose](docker-compose.yml)
 ---
 
-# 🧠 Explication des services
+#  Explication des services
 
 ---
 
@@ -112,7 +112,7 @@ echo "my-super-token" > secrets/influx_token.txt
 
 ---
 
-# 🌐 Réseau
+# Réseau
 
 ---
 
@@ -127,7 +127,7 @@ iiot-network
 
 ---
 
-# 🚀 4 — Lancement
+# 4 — Lancement
 
 ---
 
@@ -137,7 +137,7 @@ docker compose up -d
 
 ---
 
-# ✅ Vérification
+#  Vérification
 
 ---
 
@@ -160,7 +160,7 @@ docker compose up -d
 
 ---
 
-# 🧠 Réponses aux questions
+#  Réponses aux questions
 
 ---
 
@@ -194,7 +194,7 @@ docker compose up -d
 
 ---
 
-# 🏁 Conclusion
+# Conclusion
 
 ---
 
