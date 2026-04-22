@@ -23,98 +23,6 @@
         "env": []
     },
     {
-        "id": "2d1d8b9cda25dcad",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "http://mqtt-broker",
-        "port": 1883,
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": 4,
-        "keepalive": 60,
-        "cleansession": true,
-        "autoUnsubscribe": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "41568c3b552efcde",
-        "type": "influxdb",
-        "hostname": "127.0.0.1",
-        "port": 8086,
-        "protocol": "http",
-        "database": "database",
-        "name": "edge",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://influxdb:8086",
-        "timeout": 10,
-        "rejectUnauthorized": true
-    },
-    {
-        "id": "a0b3fdc9c90e5e93",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "http://mqtt-broker",
-        "port": 1883,
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": 4,
-        "keepalive": 60,
-        "cleansession": true,
-        "autoUnsubscribe": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
-    },
-    {
-        "id": "4e8d56915b692cb4",
-        "type": "influxdb",
-        "hostname": "127.0.0.1",
-        "port": 8086,
-        "protocol": "http",
-        "database": "database",
-        "name": "edge",
-        "usetls": false,
-        "tls": "",
-        "influxdbVersion": "2.0",
-        "url": "http://192.168.0.64:8086",
-        "timeout": 10,
-        "rejectUnauthorized": true
-    },
-    {
         "id": "2a1df8fd93b08537",
         "type": "mqtt-broker",
         "name": "",
@@ -156,48 +64,9 @@
         "usetls": false,
         "tls": "",
         "influxdbVersion": "2.0",
-        "url": "http://192.168.56.12:8086",
+        "url": "http://192.168.0.64:8086",
         "timeout": 10,
         "rejectUnauthorized": true
-    },
-    {
-        "id": "39581dbb212c8223",
-        "type": "ui-base",
-        "name": "My Dashboard",
-        "path": "/dashboard",
-        "appIcon": "",
-        "includeClientData": true,
-        "acceptsClientConfig": [
-            "ui-notification",
-            "ui-control"
-        ],
-        "showPathInSidebar": false,
-        "headerContent": "page",
-        "navigationStyle": "default",
-        "titleBarStyle": "default",
-        "showReconnectNotification": true,
-        "notificationDisplayTime": 1,
-        "showDisconnectNotification": true,
-        "allowInstall": false
-    },
-    {
-        "id": "64fb692f89dd7bc0",
-        "type": "ui-theme",
-        "name": "Default Theme",
-        "colors": {
-            "surface": "#ffffff",
-            "primary": "#0094CE",
-            "bgPage": "#eeeeee",
-            "groupBg": "#ffffff",
-            "groupOutline": "#cccccc"
-        },
-        "sizes": {
-            "density": "default",
-            "pagePadding": "12px",
-            "groupGap": "12px",
-            "groupBorderRadius": "4px",
-            "widgetGap": "12px"
-        }
     },
     {
         "id": "c5df3308a2890238",
@@ -219,118 +88,30 @@
         }
     },
     {
-        "id": "0353d8abf9e7f7a6",
-        "type": "ui-page",
-        "name": "PLC1",
-        "ui": "39581dbb212c8223",
-        "path": "/page1",
-        "icon": "home",
-        "layout": "grid",
-        "theme": "c5df3308a2890238",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
+        "id": "418f123c8a67a88b",
+        "type": "ui-base",
+        "name": "My Dashboard",
+        "path": "/dashboard",
+        "appIcon": "",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
         ],
-        "order": 2,
-        "className": "",
-        "visible": "true",
-        "disabled": "false"
-    },
-    {
-        "id": "4c1a3cb54285c88d",
-        "type": "ui-page",
-        "name": "PLC2",
-        "ui": "39581dbb212c8223",
-        "path": "/page2",
-        "icon": "home",
-        "layout": "grid",
-        "theme": "c5df3308a2890238",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": 1,
-        "className": "",
-        "visible": "true",
-        "disabled": "false"
-    },
-    {
-        "id": "4767e82ae91ece65",
-        "type": "ui-page",
-        "name": "PLC3",
-        "ui": "39581dbb212c8223",
-        "path": "/page3",
-        "icon": "home",
-        "layout": "grid",
-        "theme": "c5df3308a2890238",
-        "breakpoints": [
-            {
-                "name": "Default",
-                "px": "0",
-                "cols": "3"
-            },
-            {
-                "name": "Tablet",
-                "px": "576",
-                "cols": "6"
-            },
-            {
-                "name": "Small Desktop",
-                "px": "768",
-                "cols": "9"
-            },
-            {
-                "name": "Desktop",
-                "px": "1024",
-                "cols": "12"
-            }
-        ],
-        "order": -1,
-        "className": "",
-        "visible": "true",
-        "disabled": "false"
+        "showPathInSidebar": false,
+        "headerContent": "page",
+        "navigationStyle": "default",
+        "titleBarStyle": "default",
+        "showReconnectNotification": true,
+        "notificationDisplayTime": 1,
+        "showDisconnectNotification": true,
+        "allowInstall": false
     },
     {
         "id": "319c70e7ec9ff1b5",
         "type": "ui-page",
         "name": "PLC1",
-        "ui": "39581dbb212c8223",
+        "ui": "418f123c8a67a88b",
         "path": "/page1",
         "icon": "home",
         "layout": "grid",
@@ -366,7 +147,7 @@
         "id": "0ad81a4310922744",
         "type": "ui-page",
         "name": "PLC2",
-        "ui": "39581dbb212c8223",
+        "ui": "418f123c8a67a88b",
         "path": "/page2",
         "icon": "home",
         "layout": "grid",
@@ -402,7 +183,7 @@
         "id": "cf9ef65860b82374",
         "type": "ui-page",
         "name": "PLC3",
-        "ui": "39581dbb212c8223",
+        "ui": "418f123c8a67a88b",
         "path": "/page3",
         "icon": "home",
         "layout": "grid",
@@ -433,48 +214,6 @@
         "className": "",
         "visible": "true",
         "disabled": "false"
-    },
-    {
-        "id": "520e6e0df1fd141d",
-        "type": "ui-group",
-        "name": "PLC1",
-        "page": "319c70e7ec9ff1b5",
-        "width": 6,
-        "height": 1,
-        "order": 1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "0a4724f170fed582",
-        "type": "ui-group",
-        "name": "PLC2",
-        "page": "0ad81a4310922744",
-        "width": 6,
-        "height": 1,
-        "order": 1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
-    },
-    {
-        "id": "5fa70db64fba2504",
-        "type": "ui-group",
-        "name": "PLC3",
-        "page": "cf9ef65860b82374",
-        "width": 6,
-        "height": 1,
-        "order": -1,
-        "showTitle": true,
-        "className": "",
-        "visible": "true",
-        "disabled": "false",
-        "groupType": "default"
     },
     {
         "id": "f6557bef37576562",
@@ -804,135 +543,11 @@
         "database": "database",
         "precisionV18FluxV20": "ms",
         "retentionPolicyV18Flux": "",
-        "org": "iiot",
+        "org": "IoT",
         "bucket": "edge-GW",
-        "x": 1510,
+        "x": 1490,
         "y": 520,
         "wires": []
-    },
-    {
-        "id": "e3a636ec861e3427",
-        "type": "ui-chart",
-        "z": "f6f2187d.f17ca8",
-        "group": "f6557bef37576562",
-        "name": "Vibration",
-        "label": "Motor Vibration",
-        "order": 3,
-        "chartType": "line",
-        "category": "topic",
-        "categoryType": "msg",
-        "xAxisLabel": "time",
-        "xAxisProperty": "",
-        "xAxisPropertyType": "timestamp",
-        "xAxisType": "time",
-        "xAxisFormat": "",
-        "xAxisFormatType": "auto",
-        "xmin": "",
-        "xmax": "",
-        "yAxisLabel": "vibration(g)",
-        "yAxisProperty": "payload",
-        "yAxisPropertyType": "msg",
-        "ymin": "0",
-        "ymax": "5",
-        "bins": 10,
-        "action": "append",
-        "stackSeries": false,
-        "pointShape": "circle",
-        "pointRadius": 4,
-        "showLegend": true,
-        "removeOlder": 1,
-        "removeOlderUnit": "3600",
-        "removeOlderPoints": "",
-        "colors": [
-            "#0095ff",
-            "#ff0000",
-            "#ff7f0e",
-            "#2ca02c",
-            "#a347e1",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "textColor": [
-            "#666666"
-        ],
-        "textColorDefault": true,
-        "gridColor": [
-            "#e5e5e5"
-        ],
-        "gridColorDefault": true,
-        "width": "6",
-        "height": "8",
-        "className": "",
-        "interpolation": "step",
-        "x": 1500,
-        "y": 760,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "dcc8a2ac388e9125",
-        "type": "ui-chart",
-        "z": "f6f2187d.f17ca8",
-        "group": "f6557bef37576562",
-        "name": "Motor Current",
-        "label": "Motor Vibration",
-        "order": 2,
-        "chartType": "line",
-        "category": "topic",
-        "categoryType": "msg",
-        "xAxisLabel": "time",
-        "xAxisProperty": "",
-        "xAxisPropertyType": "timestamp",
-        "xAxisType": "time",
-        "xAxisFormat": "",
-        "xAxisFormatType": "auto",
-        "xmin": "",
-        "xmax": "",
-        "yAxisLabel": "current (A)",
-        "yAxisProperty": "payload",
-        "yAxisPropertyType": "msg",
-        "ymin": "0",
-        "ymax": "20",
-        "bins": 10,
-        "action": "append",
-        "stackSeries": false,
-        "pointShape": "circle",
-        "pointRadius": 4,
-        "showLegend": true,
-        "removeOlder": 1,
-        "removeOlderUnit": "3600",
-        "removeOlderPoints": "",
-        "colors": [
-            "#0095ff",
-            "#ff0000",
-            "#ff7f0e",
-            "#2ca02c",
-            "#a347e1",
-            "#d62728",
-            "#ff9896",
-            "#9467bd",
-            "#c5b0d5"
-        ],
-        "textColor": [
-            "#666666"
-        ],
-        "textColorDefault": true,
-        "gridColor": [
-            "#e5e5e5"
-        ],
-        "gridColorDefault": true,
-        "width": "6",
-        "height": "8",
-        "className": "",
-        "interpolation": "step",
-        "x": 1500,
-        "y": 880,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "e3b068d21249ff1c",
@@ -1092,6 +707,148 @@
         "className": "",
         "x": 1500,
         "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e3a636ec861e3427",
+        "type": "ui-chart",
+        "z": "f6f2187d.f17ca8",
+        "group": "f6557bef37576562",
+        "name": "Vibration",
+        "label": "Motor Vibration",
+        "order": 3,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "vibration(g)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "5",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "step",
+        "x": 1500,
+        "y": 760,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "dcc8a2ac388e9125",
+        "type": "ui-chart",
+        "z": "f6f2187d.f17ca8",
+        "group": "f6557bef37576562",
+        "name": "Motor Current",
+        "label": "Motor Vibration",
+        "order": 2,
+        "chartType": "line",
+        "category": "topic",
+        "categoryType": "msg",
+        "xAxisLabel": "time",
+        "xAxisProperty": "",
+        "xAxisPropertyType": "timestamp",
+        "xAxisType": "time",
+        "xAxisFormat": "",
+        "xAxisFormatType": "auto",
+        "xmin": "",
+        "xmax": "",
+        "yAxisLabel": "current (A)",
+        "yAxisProperty": "payload",
+        "yAxisPropertyType": "msg",
+        "ymin": "0",
+        "ymax": "20",
+        "bins": 10,
+        "action": "append",
+        "stackSeries": false,
+        "pointShape": "circle",
+        "pointRadius": 4,
+        "showLegend": true,
+        "removeOlder": 1,
+        "removeOlderUnit": "3600",
+        "removeOlderPoints": "",
+        "colors": [
+            "#0095ff",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#a347e1",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "textColor": [
+            "#666666"
+        ],
+        "textColorDefault": true,
+        "gridColor": [
+            "#e5e5e5"
+        ],
+        "gridColorDefault": true,
+        "width": "6",
+        "height": "8",
+        "className": "",
+        "interpolation": "step",
+        "x": 1500,
+        "y": 880,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "857a9b08954b8b83",
+        "type": "function",
+        "z": "f6f2187d.f17ca8",
+        "name": "function 15",
+        "func": "let parts = msg.topic.split(\"/\");\n\n// sécurité\nif (parts.length < 3) return null;\n\nlet machine = parts[1];\nlet sensor = parts[2];\n\nlet value = Number(msg.payload);\n\n// ignorer non numérique\nif (isNaN(value)) return null;\n\n// format SIMPLE (compatible mode 1)\nmsg.payload = {};\nmsg.payload[sensor] = value;\n\n// ajouter tag\nmsg.tags = {\n    machine: machine\n};\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1350,
+        "y": 80,
         "wires": [
             []
         ]
@@ -1266,7 +1023,7 @@
         "type": "debug",
         "z": "93510897d5194e70",
         "name": "debug 2",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -1276,6 +1033,114 @@
         "x": 1420,
         "y": 180,
         "wires": []
+    },
+    {
+        "id": "ef1f0a59b7fab910",
+        "type": "ui-gauge",
+        "z": "93510897d5194e70",
+        "name": "Oil level",
+        "group": "7e8a62703ff7a279",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-tank",
+        "gstyle": "needle",
+        "title": "Oil level",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "RPM",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#f40101",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "90",
+                "color": "#0af025",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1440,
+        "y": 600,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1911e1736247d1b3",
+        "type": "ui-gauge",
+        "z": "93510897d5194e70",
+        "name": "hydraulic temperature",
+        "group": "7e8a62703ff7a279",
+        "order": 2,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-half",
+        "gstyle": "needle",
+        "title": "hydraulic temperature",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "°C",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#5cd65c",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "45",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "100",
+                "color": "#ea5353",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "100",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1460,
+        "y": 380,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "b7dd0950a31b1686",
@@ -1397,114 +1262,6 @@
         "interpolation": "step",
         "x": 1420,
         "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ef1f0a59b7fab910",
-        "type": "ui-gauge",
-        "z": "93510897d5194e70",
-        "name": "Oil level",
-        "group": "7e8a62703ff7a279",
-        "order": 1,
-        "value": "payload",
-        "valueType": "msg",
-        "width": "6",
-        "height": "8",
-        "gtype": "gauge-tank",
-        "gstyle": "needle",
-        "title": "Oil level",
-        "alwaysShowTitle": false,
-        "floatingTitlePosition": "top-left",
-        "units": "RPM",
-        "icon": "",
-        "prefix": "",
-        "suffix": "",
-        "segments": [
-            {
-                "from": "0",
-                "color": "#f40101",
-                "text": "",
-                "textType": "label"
-            },
-            {
-                "from": "50",
-                "color": "#ffc800",
-                "text": "",
-                "textType": "label"
-            },
-            {
-                "from": "90",
-                "color": "#0af025",
-                "text": "",
-                "textType": "label"
-            }
-        ],
-        "min": 0,
-        "max": "100",
-        "sizeThickness": 16,
-        "sizeGap": 4,
-        "sizeKeyThickness": 8,
-        "styleRounded": true,
-        "styleGlow": false,
-        "className": "",
-        "x": 1440,
-        "y": 600,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "1911e1736247d1b3",
-        "type": "ui-gauge",
-        "z": "93510897d5194e70",
-        "name": "hydraulic temperature",
-        "group": "7e8a62703ff7a279",
-        "order": 2,
-        "value": "payload",
-        "valueType": "msg",
-        "width": "6",
-        "height": "8",
-        "gtype": "gauge-half",
-        "gstyle": "needle",
-        "title": "hydraulic temperature",
-        "alwaysShowTitle": false,
-        "floatingTitlePosition": "top-left",
-        "units": "°C",
-        "icon": "",
-        "prefix": "",
-        "suffix": "",
-        "segments": [
-            {
-                "from": "0",
-                "color": "#5cd65c",
-                "text": "",
-                "textType": "label"
-            },
-            {
-                "from": "45",
-                "color": "#ffc800",
-                "text": "",
-                "textType": "label"
-            },
-            {
-                "from": "100",
-                "color": "#ea5353",
-                "text": "",
-                "textType": "label"
-            }
-        ],
-        "min": 0,
-        "max": "100",
-        "sizeThickness": 16,
-        "sizeGap": 4,
-        "sizeKeyThickness": 8,
-        "styleRounded": true,
-        "styleGlow": false,
-        "className": "",
-        "x": 1460,
-        "y": 380,
         "wires": [
             []
         ]
@@ -1689,6 +1446,60 @@
         "x": 1480,
         "y": 180,
         "wires": []
+    },
+    {
+        "id": "f3cd891a7598c782",
+        "type": "ui-gauge",
+        "z": "d1949caaacae4884",
+        "name": "Power factor",
+        "group": "44530da32b20b5f9",
+        "order": 1,
+        "value": "payload",
+        "valueType": "msg",
+        "width": "6",
+        "height": "8",
+        "gtype": "gauge-tank",
+        "gstyle": "needle",
+        "title": "Power factor",
+        "alwaysShowTitle": false,
+        "floatingTitlePosition": "top-left",
+        "units": "RPM",
+        "icon": "",
+        "prefix": "",
+        "suffix": "",
+        "segments": [
+            {
+                "from": "0",
+                "color": "#ce0d51",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "0,50",
+                "color": "#ffc800",
+                "text": "",
+                "textType": "label"
+            },
+            {
+                "from": "0,90",
+                "color": "#3bf109",
+                "text": "",
+                "textType": "label"
+            }
+        ],
+        "min": 0,
+        "max": "1",
+        "sizeThickness": 16,
+        "sizeGap": 4,
+        "sizeKeyThickness": 8,
+        "styleRounded": true,
+        "styleGlow": false,
+        "className": "",
+        "x": 1510,
+        "y": 600,
+        "wires": [
+            []
+        ]
     },
     {
         "id": "c7ce0627f92507aa",
@@ -1877,61 +1688,7 @@
         ]
     },
     {
-        "id": "f3cd891a7598c782",
-        "type": "ui-gauge",
-        "z": "d1949caaacae4884",
-        "name": "Power factor",
-        "group": "44530da32b20b5f9",
-        "order": 1,
-        "value": "payload",
-        "valueType": "msg",
-        "width": "6",
-        "height": "8",
-        "gtype": "gauge-tank",
-        "gstyle": "needle",
-        "title": "Power factor",
-        "alwaysShowTitle": false,
-        "floatingTitlePosition": "top-left",
-        "units": "RPM",
-        "icon": "",
-        "prefix": "",
-        "suffix": "",
-        "segments": [
-            {
-                "from": "0",
-                "color": "#ce0d51",
-                "text": "",
-                "textType": "label"
-            },
-            {
-                "from": "0,50",
-                "color": "#ffc800",
-                "text": "",
-                "textType": "label"
-            },
-            {
-                "from": "0,90",
-                "color": "#3bf109",
-                "text": "",
-                "textType": "label"
-            }
-        ],
-        "min": 0,
-        "max": "1",
-        "sizeThickness": 16,
-        "sizeGap": 4,
-        "sizeKeyThickness": 8,
-        "styleRounded": true,
-        "styleGlow": false,
-        "className": "",
-        "x": 1510,
-        "y": 600,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "e7974715a07a15b5",
+        "id": "0efec91333b82ebb",
         "type": "global-config",
         "env": [],
         "modules": {
