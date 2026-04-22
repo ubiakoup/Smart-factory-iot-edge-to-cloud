@@ -282,7 +282,7 @@ Pourquoi automatiser toute l’infrastructure ?
 
 ---
 
-# 🔭 Vision finale
+# Vision finale
 
 ---
 
