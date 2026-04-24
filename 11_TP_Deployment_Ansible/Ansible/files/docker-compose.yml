@@ -9,9 +9,7 @@ services:
       - "1883:1883"
     networks:
       - iiot-network
-    volumes:
-      - ./mosquitto/config:/mosquitto/config
-      - ./mosquitto/certs:/mosquitto/certs
+    
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mosquitto_pub", "-h", "localhost", "-t", "healthcheck", "-m", "ok"]
@@ -68,17 +66,23 @@ services:
     restart: unless-stopped
 
   node-red:
-    image: nodered/node-red
+    build:
+      context: .
+      dockerfile: Dockerfile_node_red
+#    image: nodered/node-red:latest
     container_name: node-red
     depends_on:
       mosquitto:
         condition: service_healthy
       influxdb:
         condition: service_healthy
+    environment:
+      - NODE_RED_ENABLE_PROJECTS=true
+      - FLOWS=flows.json
     ports:
       - "1880:1880"
-    volumes:
-      - /home/edge/data/node-red:/data
+#    volumes:
+#      - /home/vagrant/data/node-red:/data
     networks:
       - iiot-network
     restart: unless-stopped

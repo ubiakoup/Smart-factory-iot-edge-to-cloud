@@ -1,0 +1,19 @@
+# Dockerfile_node_red
+
+FROM nodered/node-red:latest
+
+USER root
+
+# Installer les nodes directement dans l'image
+RUN npm install \
+    node-red-contrib-influxdb \
+    @flowfuse/node-red-dashboard \
+    --unsafe-perm --no-audit --no-fund
+
+# Copier le flow directement
+COPY node-red/flows.json /data/flows.json
+
+# Permissions
+RUN chown -R node-red:node-red /data
+
+USER node-red

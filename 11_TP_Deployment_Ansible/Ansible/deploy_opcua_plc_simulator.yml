@@ -1,0 +1,52 @@
+---
+- name: Deploy OPC UA PLC Simulator
+  hosts: opcua_plc_simulator
+  become: true
+
+  vars:
+    venv_path: /home/vagrant/venv
+    app_path: /home/vagrant/opcua_plc_simulator
+
+  pre_tasks:
+
+    - name: Ensure python3-venv is installed
+      ansible.builtin.apt:
+        name: python3-venv
+        state: present
+        update_cache: yes
+
+    - name: Create application directory
+      ansible.builtin.file:
+        path: "{{ app_path }}"
+        state: directory
+        owner: vagrant
+        group: vagrant
+        mode: '0755'
+
+    - name: Create virtual environment (idempotent)
+      ansible.builtin.command: python3 -m venv {{ venv_path }}
+      args:
+        creates: "{{ venv_path }}/bin/activate"
+
+  tasks:
+
+    - name: Copy requirements.txt
+      ansible.builtin.copy:
+        src: ./opcua_plc_simulator/requirements.txt
+        dest: "{{ app_path }}/requirements.txt"
+        owner: vagrant
+        group: vagrant
+
+    - name: Install Python dependencies
+      ansible.builtin.pip:
+        requirements: "{{ app_path }}/requirements.txt"
+        virtualenv: "{{ venv_path }}"
+        virtualenv_python: python3
+
+    - name: Copy OPC UA PLC Simulator script
+      ansible.builtin.copy:
+        src: ./opcua_plc_simulator/opcua_plc_simulator.py
+        dest: "{{ app_path }}/opcua_plc_simulator.py"
+        owner: vagrant
+        group: vagrant
+        mode: '0755'

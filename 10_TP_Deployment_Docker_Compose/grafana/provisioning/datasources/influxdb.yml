@@ -10,7 +10,7 @@ datasources:
 
     jsonData:
       version: Flux
-      organization: IoT
+      organization: iiot
       defaultBucket: edge-GW
 
     secureJsonData:

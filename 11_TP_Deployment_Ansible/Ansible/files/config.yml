@@ -1,8 +1,8 @@
 opcua:
-  url: "opc.tcp://192.168.0.141:4840"
+  url: "opc.tcp://192.168.56.11:4840"
 
 mqtt:
-  broker: mosquitto
+  broker: mqtt-broker
   port: 1883
 
 factory:

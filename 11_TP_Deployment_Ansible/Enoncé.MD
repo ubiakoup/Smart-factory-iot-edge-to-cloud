@@ -1,13 +1,13 @@
-#  TP 11 — Déploiement IIoT avec Ansible
+# 🚀 TP 11 — Déploiement IIoT avec Ansible (Vagrant Edition)
 
 ---
 
-##  Objectifs pédagogiques
+## 🎯 Objectifs pédagogiques
 
 À la fin de ce TP, vous serez capable de :
 
 * Comprendre le rôle d’Ansible dans une architecture DevOps
-* Configurer une communication SSH sécurisée
+* Configurer une communication SSH dans un environnement Vagrant
 * Définir un inventaire Ansible
 * Écrire un playbook de déploiement
 * Automatiser entièrement une stack IoT
@@ -15,13 +15,13 @@
 
 ---
 
-##  Contexte
+## 🧠 Contexte
 
 Jusqu’ici, vous avez déployé votre architecture IoT :
 
 ```text
 PLC → OPC UA → MQTT → Node-RED → InfluxDB → Grafana
-```
+````
 
 👉 MAIS :
 
@@ -31,30 +31,24 @@ PLC → OPC UA → MQTT → Node-RED → InfluxDB → Grafana
 
 ---
 
-## Problème
+## ❌ Problème
 
-* connexion manuelle à chaque machine
+Dans un environnement multi-machines :
+
+* connexion manuelle à chaque VM
 * erreurs humaines possibles
 * difficile à reproduire
-* impossible à déployer à grande échelle
+* non industrialisable
 
 ---
 
-## Solution
+## ✅ Solution
 
 👉 Utiliser **Ansible**
 
 ---
 
-##  Principe
-
-```text
-1 serveur Ansible → déploie → plusieurs machines
-```
-
----
-
-## Infrastructure
+## 🧱 Infrastructure
 
 | Machine          | Rôle          | IP            |
 | ---------------- | ------------- | ------------- |
@@ -64,77 +58,159 @@ PLC → OPC UA → MQTT → Node-RED → InfluxDB → Grafana
 
 ---
 
-# Partie 1 — Configuration SSH (OBLIGATOIRE)
+# ⚠️ IMPORTANT — Spécificité Vagrant
+
+👉 Chaque machine virtuelle Vagrant possède sa propre clé SSH
+
+👉 Donc :
+
+❌ `ssh-copy-id` ne fonctionne pas
+❌ connexion SSH classique impossible
 
 ---
 
-## Objectif
+## ✅ Approche utilisée
 
-Permettre à Ansible de se connecter **sans mot de passe**
+👉 Nous allons :
+
+* Utiliser le dossier partagé Vagrant
+* Accéder aux clés générées automatiquement
+* Les utiliser depuis la machine Ansible
 
 ---
 
-## Étape 1 — Générer une clé SSH
+# 📁 Partie 1 — Accès aux clés Vagrant
 
-Sur le serveur Ansible :
+---
 
-```bash
-ssh-keygen -t rsa -b 4096
+## ⚠️ IMPORTANT — Accès au dossier `.vagrant`
+
+Le dossier `.vagrant` est généré automatiquement par Vagrant.
+
+---
+
+## ❌ Mauvaise pratique
+
+Ne pas utiliser directement :
+
+```text
+./.vagrant
+```
+
+👉 Pourquoi ?
+
+* dépend du système host (Windows / Linux)
+* non portable
+* source d’erreurs
+
+---
+
+## ✅ Bonne pratique
+
+Utiliser le dossier partagé Projects et creer un dossier vagrant puis y copier le dossier .vagrant
+
+```text
+/vagrant/.vagrant
+```
+
+👉 Ce chemin est :
+
+* accessible depuis la VM Ansible
+* stable
+* identique pour tous
+
+---
+
+## 🧠 À retenir
+
+```text
+Host (Windows) → 11_TP_Deployment_Ansible\vagrant\.vagrant
+VM (Linux) → Projects/vagrant/.vagrant
 ```
 
 ---
 
-## Étape 2 — Copier la clé sur les machines
+# 🔐 Partie 2 — Configuration SSH (VM Ansible)
 
-### Edge Gateway
+---
+
+## 🎯 Objectif
+
+Permettre à Ansible de se connecter aux machines
+
+---
+
+## Étape 1 — Copier les clés
+
+Sur la VM Ansible :
 
 ```bash
-ssh-copy-id vagrant@192.168.56.12
+cp /vagrant/.vagrant/machines/iot-edge/virtualbox/private_key ~/.ssh/edge_key
+
+cp /vagrant/.vagrant/machines/iot-opcua-plc-simulator/virtualbox/private_key ~/.ssh/opcua_plc_simulator_key
 ```
 
-### PLC Simulator
+---
+
+## Étape 2 — Corriger les permissions (CRITIQUE)
 
 ```bash
-ssh-copy-id vagrant@192.168.56.11
+chmod 600 ~/.ssh/edge_key
+chmod 600 ~/.ssh/opcua_plc_simulator_key
+```
+
+👉 Sinon erreur :
+
+```text
+UNPROTECTED PRIVATE KEY FILE
 ```
 
 ---
 
-## Étape 3 — Tester la connexion
+## Étape 3 — Tester SSH
 
 ```bash
-ssh vagrant@192.168.56.12
+ssh -i ~/.ssh/edge_key vagrant@192.168.56.12
+
+ssh -i ~/.ssh/opcua_plc_simulator_key vagrant@192.168.56.11
 ```
 
-👉 Connexion sans mot de passe attendue
+👉 Connexion attendue sans erreur
 
 ---
 
-# Partie 2 — Inventaire Ansible
+# 🧾 Partie 3 — Inventaire Ansible
 
 ---
 
-## Objectif
+Créer le fichier `hosts.yml` :
 
-Déclarer les machines à gérer
+```yaml
+---
+all:
+  vars:
+    ansible_user: vagrant
+    ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
+
+  children:
+    edge:
+      hosts:
+        client1:
+          ansible_host: 192.168.56.12
+          ansible_ssh_private_key_file: /home/vagrant/.ssh/edge_key
+
+    opcua_plc_simulator:
+      hosts:
+        client2:
+          ansible_host: 192.168.56.11
+          ansible_ssh_private_key_file: /home/vagrant/.ssh/opcua_plc_simulator_key
+```
 
 ---
 
-## Fichier : `hosts.yml`
-
-Créer un inventaire contenant :
-
-* groupe **edge**
-* groupe **opcua_plc_simulator**
-* IP des machines
+# 🔍 Partie 4 — Test de connectivité
 
 ---
-
-#  Partie 3 — Test de connectivité
-
----
-
-## Commande
 
 ```bash
 ansible all -i hosts.yml -m ping
@@ -142,19 +218,20 @@ ansible all -i hosts.yml -m ping
 
 ---
 
-## Résultat attendu
+## ✅ Résultat attendu
 
 ```text
-SUCCESS
+client1 | SUCCESS
+client2 | SUCCESS
 ```
 
 ---
 
-# Partie 4 — Playbook de déploiement
+# 🚀 Partie 5 — Playbook de déploiement
 
 ---
 
-## Objectif
+## 🎯 Objectif
 
 Créer un playbook permettant de :
 
@@ -162,10 +239,6 @@ Créer un playbook permettant de :
 * copier les fichiers
 * configurer l’environnement
 * lancer Docker Compose
-
----
-
-## Fichier : `deploy.yml`
 
 ---
 
@@ -187,25 +260,29 @@ docker compose up -d --build
 
 ---
 
-# Partie 5 — Organisation du projet
+# 📁 Partie 6 — Organisation du projet
 
 ---
-
-## Objectif
-
-Structurer les fichiers pour Ansible
-
----
-
-### Arborescence attendue
 
 ```bash
 Ansible/
 ├── ansible.cfg
 ├── hosts.yml
-├── deploy.yml
+├── deploy_edge.yml
+├── deploy_opcua_plc_simulator.yml
 ├── vars.yml
 │
+├── group_vars/
+│   ├── edge.yml
+│
+├── opcua-plc-simulator/
+│   ├── opcua_plc_simulation.py
+│   ├── requirements.txt
+|
+├── templates/
+│   ├── .env.j2
+|
+|
 ├── files/
 │   ├── docker-compose.yml
 │   ├── config.yml
@@ -223,22 +300,34 @@ Ansible/
 │   └── secrets/
 │       └── influx_token.txt
 ```
-
+## installer posix sur le serveur Ansible
+```bash
+ansible-galaxy collection install ansible.posix
+```
 ---
 
-# Partie 6 — Déploiement
+# 🚀 Partie 7 — Déploiement 
 
+## Déploiement sur L'edge
 ---
-
-## Commande
 
 ```bash
-ansible-playbook -i hosts.yml deploy.yml
+ansible-playbook -i hosts.yml deploy_edge.yml
+```
+
+---
+## Déploiement sur le Simulateur(opcua-plc-simulator)
+
+---
+
+```bash
+ansible-playbook -i hosts.yml deploy_opcua_plc_simulator.yml
 ```
 
 ---
 
-## Résultat attendu
+
+## 🎯 Résultat attendu
 
 👉 Déploiement automatique complet :
 
@@ -250,11 +339,9 @@ ansible-playbook -i hosts.yml deploy.yml
 
 ---
 
-# Vérifications
+# 🔍 Vérifications
 
 ---
-
-## Accès aux services
 
 | Service  | URL                                                    |
 | -------- | ------------------------------------------------------ |
@@ -269,39 +356,44 @@ ansible-playbook -i hosts.yml deploy.yml
 * données visibles ✔
 * dashboards chargés ✔
 * alertes actives ✔
-* emails reçus ✔
 
 ---
 
-# Analyse
+# 🧠 Analyse
 
 ---
 
 ## Question 1
 
-Pourquoi SSH key est indispensable pour Ansible ?
+Pourquoi les clés SSH sont indispensables avec Ansible ?
 
 ---
 
 ## Question 2
 
-Quel est l’intérêt d’un inventaire ?
+Pourquoi `ssh-copy-id` ne fonctionne pas avec Vagrant ?
 
 ---
 
 ## Question 3
 
-Pourquoi utiliser un playbook ?
+Quel est l’intérêt d’un inventaire ?
 
 ---
 
 ## Question 4
 
+Pourquoi utiliser un playbook ?
+
+---
+
+## Question 5
+
 Quel est l’avantage d’Ansible par rapport à Docker Compose seul ?
 
 ---
 
-#  Résultat attendu
+# 🏁 Résultat final
 
 ---
 
@@ -312,7 +404,7 @@ Quel est l’avantage d’Ansible par rapport à Docker Compose seul ?
 
 ---
 
-#  Vision finale
+# 🔭 Vision finale
 
 ---
 
@@ -322,7 +414,7 @@ Quel est l’avantage d’Ansible par rapport à Docker Compose seul ?
 
 ---
 
-#  Conclusion
+# 🏁 Conclusion
 
 Ansible permet :
 
@@ -331,4 +423,3 @@ Ansible permet :
 👉 de passer à l’échelle industrielle
 
 ---
-

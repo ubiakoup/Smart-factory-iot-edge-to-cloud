@@ -9,6 +9,7 @@ services:
       - "1883:1883"
     networks:
       - iiot-network
+    
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "mosquitto_pub", "-h", "localhost", "-t", "healthcheck", "-m", "ok"]
@@ -30,7 +31,7 @@ services:
       DOCKER_INFLUXDB_INIT_PASSWORD: ${DOCKER_INFLUXDB_INIT_PASSWORD}
       DOCKER_INFLUXDB_INIT_ORG: ${DOCKER_INFLUXDB_INIT_ORG}
       DOCKER_INFLUXDB_INIT_BUCKET: ${DOCKER_INFLUXDB_INIT_BUCKET}
-      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${DOCKER_INFLUXDB_INIT_ADMIN_TOKEN}
+      DOCKER_INFLUXDB_INIT_ADMIN_TOKEN: ${INFLUXDB_TOKEN}
     networks:
       - iiot-network
     restart: unless-stopped
@@ -75,7 +76,7 @@ services:
     ports:
       - "1880:1880"
     volumes:
-      - /home/edge/data/node-red:/data
+      - /home/vagrant/data/node-red:/data
     networks:
       - iiot-network
     restart: unless-stopped
