@@ -1,3 +1,6 @@
 [submodule "12_TP_Setup_Pull_Model/iiot-edge-stack"]
 	path = 12_TP_Setup_Pull_Model/iiot-edge-stack
 	url = https://github.com/ubiakoup/iiot-edge-stack.git
+[submodule "12_TP_Deployment_Pull_Model/iiot-edge-stack"]
+	path = 12_TP_Deployment_Pull_Model/iiot-edge-stack
+	url = https://github.com/ubiakoup/iiot-edge-stack.git
