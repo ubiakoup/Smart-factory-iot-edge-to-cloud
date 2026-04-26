@@ -1,11 +1,35 @@
 [Unit]
-Description=MQTT Listener AWS
-After=network.target
+Description=MQTT Listener AWS (Edge Deployment)
+After=network-online.target
+Wants=network-online.target
 
 [Service]
+Type=simple
 User=vagrant
-ExecStart=/home/vagrant/mqtt_listener.sh
-Restart=always
+
+ExecStart=/bin/bash /home/vagrant/mqtt_listener.sh
+
+# 🔥 robustesse réseau
+Restart=on-failure
+RestartSec=5
+
+# 🔥 limites anti-bug
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+# 🔐 sécurité
+NoNewPrivileges=true
+PrivateTmp=true
+
+# 🔧 ressources
+MemoryMax=500M
+CPUQuota=80%
+TasksMax=50
+LimitNOFILE=1024
+
+# 📝 logs
+StandardOutput=journal
+StandardError=journal
 
 [Install]
 WantedBy=multi-user.target

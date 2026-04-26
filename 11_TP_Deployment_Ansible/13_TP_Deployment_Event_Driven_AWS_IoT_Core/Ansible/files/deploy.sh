@@ -32,6 +32,7 @@ log "Current commit: $OLD_COMMIT"
 # Pull latest code
 # -------------------------------
 log "🔄 Pulling latest version..."
+sleep 2  # Simulate delay for testing anti-spam
 git pull origin main
 
 NEW_COMMIT=$(git rev-parse HEAD)
