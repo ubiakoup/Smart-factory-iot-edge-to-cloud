@@ -74,6 +74,9 @@ python3 --version
 ```
 
 ### 2. Vérifier pip
+```bash
+sudo apt install python3.10-venv
+```
 
 ```bash
 python3 -m pip --version
