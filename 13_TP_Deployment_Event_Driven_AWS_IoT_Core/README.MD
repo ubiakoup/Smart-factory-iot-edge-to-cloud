@@ -1,6 +1,6 @@
-# 🚀 Smart Factory IoT – Edge Deployment (Event-Driven AWS IoT)
+#  Smart Factory IoT – Edge Deployment (Event-Driven AWS IoT)
 
-## 🎯 Overview
+## Overview
 
 Ce TP implémente une architecture IoT industrielle permettant de déployer automatiquement une stack Edge via un mécanisme **event-driven sécurisé**.
 
@@ -13,7 +13,7 @@ Ce TP implémente une architecture IoT industrielle permettant de déployer auto
 
 ---
 
-## 🧱 Architecture
+## Architecture
 
 ```
 GitHub (Code push)
@@ -60,7 +60,7 @@ Edge → git pull toutes les 5 min
 
 ---
 
-### ✅ Après (TP13 – Event-Driven)
+###  Après (TP13 – Event-Driven)
 
 ```
 Git push → MQTT → Edge → Deploy immédiat
@@ -72,7 +72,7 @@ Git push → MQTT → Edge → Deploy immédiat
 
 ---
 
-## 🧠 Fonctionnement du système
+## Fonctionnement du système
 
 Le Edge écoute un topic MQTT sécurisé :
 
@@ -116,7 +116,7 @@ Reconnexion MQTT en cas de perte réseau.
 
 ---
 
-## 🚀 Script principal
+##  Script principal
 
 👉 `mqtt_listener.sh`
 
@@ -204,5 +204,3 @@ Ce projet démontre une approche réaliste d’un déploiement IoT industriel :
 ✔ maintenable
 
 ---
-
-🔥 Niveau : DevOps / IoT Engineering
