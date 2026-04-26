@@ -186,14 +186,18 @@ ou encore
     {
       "Effect": "Allow",
       "Action": "iot:Subscribe",
-      "Resource": "arn:aws:iot:*:*:topicfilter/deploy/vagrant-edge-device"
+      "Resource": "arn:aws:iot:*:*:topicfilter/deploy/edge"
     },
     {
       "Effect": "Allow",
       "Action": "iot:Receive",
-      "Resource": "arn:aws:iot:*:*:topic/deploy/vagrant-edge-device"
+      "Resource": "arn:aws:iot:*:*:topic/deploy/edge"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Publish",
+      "Resource": "arn:aws:iot:*:*:topic/deploy/edge"
     }
-    
   ]
 }
 ```

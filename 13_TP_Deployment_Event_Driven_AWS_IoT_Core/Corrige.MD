@@ -195,9 +195,29 @@ AWS IoT Core → Settings → Endpoint
 
 ```json
 {
-  "Effect": "Allow",
-  "Action": ["iot:Connect","iot:Subscribe","iot:Receive","iot:Publish"],
-  "Resource": "*"
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "iot:Connect",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Subscribe",
+      "Resource": "arn:aws:iot:*:*:topicfilter/deploy/edge"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Receive",
+      "Resource": "arn:aws:iot:*:*:topic/deploy/edge"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iot:Publish",
+      "Resource": "arn:aws:iot:*:*:topic/deploy/edge"
+    }
+  ]
 }
 ```
 
