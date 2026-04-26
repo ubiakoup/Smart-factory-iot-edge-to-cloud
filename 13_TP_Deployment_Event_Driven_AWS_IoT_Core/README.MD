@@ -174,6 +174,8 @@ systemctl status mqtt_listener.service
 
 ---
 
+
+
 ## 🧠 Concepts avancés utilisés
 
 * Event-driven architecture
