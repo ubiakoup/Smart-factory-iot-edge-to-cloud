@@ -66,11 +66,11 @@ Certaines données doivent déclencher des actions en temps réel
 
 ---
 
-# 🔄 Changement de paradigme
+#  Changement de paradigme
 
 ---
 
-## ❌ Avant (TP14)
+##  Avant (TP14)
 
 ```text id="ctx6"
 Stockage des données
@@ -86,7 +86,7 @@ Traitement temps réel + réaction automatique
 
 ---
 
-# 🎯 Objectif du TP
+# Objectif du TP
 
 Mettre en place une architecture :
 
@@ -96,7 +96,7 @@ Edge → AWS IoT → Lambda → SNS → Notification
 
 ---
 
-# 🧱 Architecture cible
+# Architecture cible
 
 ```text id="ctx9"
 MQTT Broker (Edge)
@@ -116,7 +116,7 @@ Email / Notification
 
 ---
 
-# 🔑 Concepts introduits
+#  Concepts introduits
 
 * Event-driven processing
 * AWS Lambda (serverless)
@@ -126,7 +126,7 @@ Email / Notification
 
 ---
 
-# ⚠️ Point important
+#  Point important
 
 ```text id="ctx10"
 Vous ne stockez plus seulement les données
@@ -135,7 +135,7 @@ Vous ne stockez plus seulement les données
 
 ---
 
-# 🛠️ Partie 1 — Création d’une fonction Lambda
+#  Partie 1 — Création d’une fonction Lambda
 
 ---
 
@@ -157,7 +157,7 @@ recevoir et analyser les données IoT
 
 ---
 
-## 🔍 Résultat attendu
+##  Résultat attendu
 
 ```text id="ctx12"
 La fonction reçoit les données depuis AWS IoT
@@ -165,7 +165,7 @@ La fonction reçoit les données depuis AWS IoT
 
 ---
 
-# 🛠️ Partie 2 — Logique métier
+# Partie 2 — Logique métier
 
 ---
 
@@ -191,7 +191,7 @@ Si température > seuil → alerte
 
 ---
 
-## 🔍 Résultat attendu
+## Résultat attendu
 
 ```text id="ctx14"
 La fonction détecte les situations anormales
@@ -199,7 +199,7 @@ La fonction détecte les situations anormales
 
 ---
 
-# 🛠️ Partie 3 — SNS (Notification)
+#  Partie 3 — SNS (Notification)
 
 ---
 
@@ -217,7 +217,7 @@ Envoyer une notification automatique.
 
 ---
 
-## 🔍 Résultat attendu
+##  Résultat attendu
 
 ```text id="ctx15"
 Une notification est envoyée en cas d’anomalie
@@ -225,7 +225,7 @@ Une notification est envoyée en cas d’anomalie
 
 ---
 
-# 🛠️ Partie 4 — IoT Rule
+#  Partie 4 — IoT Rule
 
 ---
 
@@ -243,7 +243,7 @@ Relier AWS IoT à Lambda.
 
 ---
 
-## 🔍 Résultat attendu
+## Résultat attendu
 
 ```text id="ctx16"
 Chaque message MQTT déclenche Lambda
@@ -251,7 +251,7 @@ Chaque message MQTT déclenche Lambda
 
 ---
 
-# 🧪 Partie 5 — Test complet
+#  Partie 5 — Test complet
 
 ---
 
@@ -271,7 +271,7 @@ publish MQTT → AWS IoT → Lambda → SNS → email
 
 ---
 
-## 🔍 Résultat attendu
+##  Résultat attendu
 
 ```text id="ctx18"
 ✔ aucune alerte si valeur normale
@@ -280,7 +280,7 @@ publish MQTT → AWS IoT → Lambda → SNS → email
 
 ---
 
-# 🔍 Analyse
+# Analyse
 
 Répondez aux questions suivantes :
 
@@ -291,7 +291,7 @@ Répondez aux questions suivantes :
 
 ---
 
-# ⚠️ Points de vigilance
+# Points de vigilance
 
 * format des messages JSON
 * permissions IAM
@@ -313,7 +313,7 @@ Répondez aux questions suivantes :
 
 ---
 
-# 🚀 Conclusion
+#  Conclusion
 
 ---
 
@@ -343,7 +343,7 @@ données analysées et exploitées en temps réel
 
 ---
 
-# 🔥 Transition
+#  Transition
 
 ```text id="ctx23"
 TP16 → analyse avancée (Timestream)
@@ -351,7 +351,7 @@ TP16 → analyse avancée (Timestream)
 
 ---
 
-# 💬 À retenir
+#  À retenir
 
 ```text id="ctx24"
 Collecter des données est utile

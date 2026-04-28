@@ -14,7 +14,7 @@ analyser les données IoT et déclencher des alertes en temps réel
 
 ---
 
-# 🧱 Architecture finale
+# Architecture finale
 
 ```text id="c2"
 Edge → MQTT → AWS IoT → IoT Rule → Lambda → SNS → Email
@@ -39,7 +39,7 @@ FROM 'factory/+/+'
 
 ---
 
-# ⚙️ Partie 2 — Lambda
+# Partie 2 — Lambda
 
 ---
 
@@ -110,7 +110,7 @@ def lambda_handler(event, context):
 
 ---
 
-# ⚙️ Partie 3 — SNS
+# Partie 3 — SNS
 
 ---
 
@@ -120,7 +120,7 @@ def lambda_handler(event, context):
 
 ---
 
-# 🔐 Partie 4 — IAM
+# Partie 4 — IAM
 
 ---
 
@@ -136,7 +136,7 @@ def lambda_handler(event, context):
 
 ---
 
-# 🧪 Partie 5 — Test
+#  Partie 5 — Test
 
 ---
 
@@ -160,7 +160,7 @@ def lambda_handler(event, context):
 
 ---
 
-# ⚠️ Limites
+#  Limites
 
 ```text id="c8"
 LAST_ALERT n’est pas persisté
@@ -174,7 +174,7 @@ DynamoDB / Redis
 
 ---
 
-# 🚀 Résultat final
+#  Résultat final
 
 ```text id="c10"
 ✔ détection anomalies
@@ -185,7 +185,7 @@ DynamoDB / Redis
 
 ---
 
-# 💬 Conclusion
+#  Conclusion
 
 ```text id="c11"
 Le système ne se contente plus de stocker les données
