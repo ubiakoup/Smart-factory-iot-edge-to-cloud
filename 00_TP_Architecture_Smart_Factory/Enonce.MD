@@ -34,7 +34,7 @@ Dans ce projet, nous allons construire une **Smart Factory complète**, de la ma
 
 Notre architecture est représentée ci-dessous :
 
-![basic-Architecture](./img/3-layers-basic-architecture.png)
+![basic-Architecture](./img/Architecture.png)
 
 ---
 
